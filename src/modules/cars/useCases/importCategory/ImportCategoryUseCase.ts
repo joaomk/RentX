@@ -30,6 +30,7 @@ class ImportCategoryUseCase {
           });
         })
         .on("end", () => {
+          fs.promises.unlink(file.path);
           resolve(categories);
         })
         .on("error", (err) => {
@@ -46,7 +47,10 @@ class ImportCategoryUseCase {
       const existCategory = this.categoriesRepository.findByName(name);
 
       if (!existCategory) {
-        this.categoriesRepository.create({ name, description });
+        this.categoriesRepository.create({
+          name,
+          description,
+        });
       }
     });
   }
