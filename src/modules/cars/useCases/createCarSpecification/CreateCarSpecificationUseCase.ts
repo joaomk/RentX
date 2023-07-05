@@ -1,4 +1,4 @@
-import { inject } from "tsyringe";
+// import { inject } from "tsyringe";
 
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
