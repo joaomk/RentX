@@ -39,7 +39,6 @@ O usuário responsável pelo cadastro deve ser um administrador
 
 **Requisitos Funcionais**
 Deve ser possível cadastrar uma imagens para um carro
-Deve ser possível listar todos os carros
 
 **Requisitos Não Funcionais**
 Utilizar o muter para upload dos arquivos
@@ -52,10 +51,13 @@ O usuário responsável pelo cadastro deve ser um administrador
 
 **Requisitos Funcionais**
 Deve ser possível cadastrar um aluguel
-Deve ser possível listar todos os carros
 
 **Requisitos Não Funcionais**
 Utilizar o muter para upload dos arquivos
 
 **Regras de Negócio**
 O aluguel deve ter duração mínima de 24h
+Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário
+Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro
+O usuário deve estar logado na aplicação
+Ao realizar um aluguel, o status do carro deverá ser alterado para indisponível
