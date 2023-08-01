@@ -5,9 +5,10 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 
 interface IRequest {
   category_id?: string;
-  name?: string;
   brand?: string;
+  name?: string;
 }
+
 @injectable()
 class ListAvailableCarsUseCase {
   constructor(
@@ -15,7 +16,7 @@ class ListAvailableCarsUseCase {
     private carsRepository: ICarsRepository
   ) {}
 
-  async execute({ name, brand, category_id }: IRequest): Promise<Car[]> {
+  async execute({ category_id, brand, name }: IRequest): Promise<Car[]> {
     const cars = await this.carsRepository.findAvailable(
       brand,
       category_id,

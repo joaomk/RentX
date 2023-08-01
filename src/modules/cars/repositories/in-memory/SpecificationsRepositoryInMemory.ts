@@ -6,26 +6,24 @@ import {
 } from "../ISpecificationsRepository";
 
 class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
-  list(): Promise<Specification[]> {
-    throw new Error("Method not implemented.");
-  }
   specifications: Specification[] = [];
 
   async create({
-    name,
     description,
+    name,
   }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = new Specification();
 
     Object.assign(specification, {
-      name,
       description,
+      name,
     });
 
     this.specifications.push(specification);
 
     return specification;
   }
+
   async findByName(name: string): Promise<Specification> {
     return this.specifications.find(
       (specification) => specification.name === name
@@ -35,6 +33,7 @@ class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
     const allSpecifications = this.specifications.filter((specification) =>
       ids.includes(specification.id)
     );
+
     return allSpecifications;
   }
 }

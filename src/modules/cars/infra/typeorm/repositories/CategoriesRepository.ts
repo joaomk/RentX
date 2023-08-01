@@ -14,7 +14,7 @@ class CategoriesRepository implements ICategoriesRepository {
     this.repository = getRepository(Category);
   }
 
-  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+  async create({ description, name }: ICreateCategoryDTO): Promise<void> {
     const category = this.repository.create({
       description,
       name,
@@ -29,8 +29,8 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   async findByName(name: string): Promise<Category> {
+    // Select * from categories where name = "name" limit 1
     const category = await this.repository.findOne({ name });
-
     return category;
   }
 }

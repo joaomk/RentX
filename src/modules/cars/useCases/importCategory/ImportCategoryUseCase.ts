@@ -1,4 +1,4 @@
-import { parse as csvParse } from "csv-parse";
+import csvParse from "csv-parse";
 import fs from "fs";
 import { inject, injectable } from "tsyringe";
 
@@ -8,6 +8,7 @@ interface IImportCategory {
   name: string;
   description: string;
 }
+
 @injectable()
 class ImportCategoryUseCase {
   constructor(
@@ -20,9 +21,8 @@ class ImportCategoryUseCase {
       const stream = fs.createReadStream(file.path);
       const categories: IImportCategory[] = [];
 
-      const parseFile = csvParse({
-        delimiter: ",",
-      });
+      const parseFile = csvParse();
+
       stream.pipe(parseFile);
 
       parseFile
@@ -45,6 +45,7 @@ class ImportCategoryUseCase {
 
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
+
     categories.map(async (category) => {
       const { name, description } = category;
 

@@ -20,6 +20,7 @@ class CreateCarUseCase {
     @inject("CarsRepository")
     private carsRepository: ICarsRepository
   ) {}
+
   async execute({
     name,
     description,
@@ -34,7 +35,7 @@ class CreateCarUseCase {
     );
 
     if (carAlreadyExists) {
-      throw new AppError("Car already Exists");
+      throw new AppError("Car already exists!");
     }
 
     const car = await this.carsRepository.create({

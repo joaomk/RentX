@@ -1,6 +1,6 @@
 {
   "env": {
-    "es2021": true,
+    "es2020": true,
     "node": true,
     "jest": true
   },
@@ -11,27 +11,20 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers",
-    "prettier"
-  ],
-  "overrides": [],
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
   "rules": {
-    "prettier/prettier": "error",
     "camelcase": "off",
+    "prettier/prettier": "error",
     "import/no-unresolved": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {
         "selector": "interface",
-        "format": [
-          "PascalCase"
-        ],
+        "format": ["PascalCase"],
         "custom": {
           "regex": "^I[A-Z]",
           "match": true
@@ -56,45 +49,18 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": [
-          "module",
-          "/^@/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "ignoreCase": true
-        }
+        "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
     "import/no-extraneous-dependencies": [
       "error",
-      {
-        "devDependencies": [
-          "**/*.spec.js"
-        ]
-      }
+      { "devDependencies": ["**/*.spec.js"] }
     ]
   },
   "settings": {
     "import/resolver": {
-      "typescript": {},
-      "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ],
-        "moduleDirectory": [
-          "node_modules",
-          "src/"
-        ]
-      }
+      "typescript": {}
     }
   }
 }

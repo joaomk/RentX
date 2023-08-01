@@ -12,13 +12,14 @@ describe("List Cars", () => {
       carsRepositoryInMemory
     );
   });
+
   it("should be able to list all available cars", async () => {
     const car = await carsRepositoryInMemory.create({
       name: "Car1",
       description: "Car description",
-      daily_rate: 110,
-      license_plate: "DEV-1234",
-      fine_amount: 100,
+      daily_rate: 110.0,
+      license_plate: "DEF-1234",
+      fine_amount: 40,
       brand: "Car_brand",
       category_id: "category_id",
     });
@@ -32,9 +33,9 @@ describe("List Cars", () => {
     const car = await carsRepositoryInMemory.create({
       name: "Car2",
       description: "Car description",
-      daily_rate: 110,
-      license_plate: "DEV-1234",
-      fine_amount: 100,
+      daily_rate: 110.0,
+      license_plate: "DEF-1234",
+      fine_amount: 40,
       brand: "Car_brand_test",
       category_id: "category_id",
     });
@@ -50,9 +51,9 @@ describe("List Cars", () => {
     const car = await carsRepositoryInMemory.create({
       name: "Car3",
       description: "Car description",
-      daily_rate: 110,
-      license_plate: "DEV-1233",
-      fine_amount: 100,
+      daily_rate: 110.0,
+      license_plate: "DEF-1235",
+      fine_amount: 40,
       brand: "Car_brand_test",
       category_id: "category_id",
     });
@@ -68,9 +69,9 @@ describe("List Cars", () => {
     const car = await carsRepositoryInMemory.create({
       name: "Car3",
       description: "Car description",
-      daily_rate: 110,
-      license_plate: "DEV-1233",
-      fine_amount: 100,
+      daily_rate: 110.0,
+      license_plate: "DEF-1235",
+      fine_amount: 40,
       brand: "Car_brand_test",
       category_id: "12345",
     });

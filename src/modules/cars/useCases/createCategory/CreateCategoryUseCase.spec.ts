@@ -6,7 +6,7 @@ import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 let createCategoryUseCase: CreateCategoryUseCase;
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 
-describe("CreateCategoryUseCase", () => {
+describe("Create Category", () => {
   beforeEach(() => {
     categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
     createCategoryUseCase = new CreateCategoryUseCase(
@@ -17,30 +17,37 @@ describe("CreateCategoryUseCase", () => {
   it("should be able to create a new category", async () => {
     const category = {
       name: "Category Test",
-      description: "Category Description Test",
+      description: "Category description Test",
     };
 
-    await createCategoryUseCase.execute(category);
+    await createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description,
+    });
 
-    const createdCategory = await categoriesRepositoryInMemory.findByName(
+    const categoryCreated = await categoriesRepositoryInMemory.findByName(
       category.name
     );
 
-    expect(createdCategory).toHaveProperty("id");
-    expect(createdCategory).toBeDefined();
-    expect(createdCategory.name).toBe(category.name);
-    expect(createdCategory.description).toBe(category.description);
+    expect(categoryCreated).toHaveProperty("id");
   });
 
   it("should not be able to create a new category with name exists", async () => {
-    expect(async () => {
-      const category = {
-        name: "Category Test",
-        description: "Category Description Test",
-      };
+    const category = {
+      name: "Category Test",
+      description: "Category description Test",
+    };
 
-      await createCategoryUseCase.execute(category);
-      await createCategoryUseCase.execute(category);
-    }).rejects.toBeInstanceOf(AppError);
+    await createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description,
+    });
+
+    await expect(
+      createCategoryUseCase.execute({
+        name: category.name,
+        description: category.description,
+      })
+    ).rejects.toEqual(new AppError("Category already exists!"));
   });
 });
