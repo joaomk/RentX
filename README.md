@@ -1,3 +1,6 @@
+Tecnologias utilizadas: Typescript, NodeJs, Express, JWT, Swagger, Jest, Supertest, TypeORM, Docker e Postgres.
+
+
 # Cadastro de carro
 
 **RF**
