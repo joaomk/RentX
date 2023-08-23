@@ -1,6 +1,6 @@
-** Tecnologias utilizadas: Typescript, NodeJs, Express, JWT, Swagger, Jest, Supertest, TypeORM, Docker e Postgres**
+**Tecnologias utilizadas: Typescript, NodeJs, Express, JWT, Swagger, Jest, Supertest, TypeORM, Docker e Postgres**
 
-** Para acessar a documentação do Swagger, acessar <http://localhost:3333/api-docs/#/>**
+**Para acessar a documentação do Swagger, acessar <http://localhost:3333/api-docs/#/>**
 ![Swagger](assets/swagger.png)
 
 # Cadastro de carro
